@@ -9,9 +9,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({
@@ -32,7 +33,9 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    SharedModule
   ]
 })
 export class StudentsModule { }

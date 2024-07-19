@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Pipe } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Student } from './models/index';
-import { generarDniAleatorio } from '../../../shared/utils';
 import { StudentDialogComponent } from './components/student-dialog/student-dialog.component';
+import { generarDniAleatorio } from '../../../shared/utils';
+import { ConcatPipe } from '../../../shared/pipes/concat.pipe';
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
   styleUrl: './students.component.scss'
 })
+
+
 export class StudentsComponent {
 
   nombreStudent = '';

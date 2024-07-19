@@ -7,16 +7,18 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
-    AuthModule
+    AuthModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync(), provideNativeDateAdapter()

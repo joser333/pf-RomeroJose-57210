@@ -17,7 +17,7 @@ export class StudentDialogComponent {
     @Inject(MAT_DIALOG_DATA) public editingStudent?: Student
   ){
     this.studentForm = this.fb.group({
-      dni:[null, Validators.required],
+      dni:[null, [Validators.required, Validators.minLength(7), Validators.pattern('^[0-9]+$')]],
       name:[null, Validators.required],
       lastName: [null, Validators.required],
       nacDate: [],
@@ -32,8 +32,13 @@ export class StudentDialogComponent {
     if(this.studentForm.valid){
       this.matDialogRef.close(this.studentForm.value);
     }else{
-      // mostrar error
+      alert('El formulario es invalido')
     }
+  }
+
+
+  onClose(): void{
+    this.matDialogRef.close();
   }
 
 }

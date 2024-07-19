@@ -4,31 +4,39 @@
     <mat-form-field class="w-full">
       <mat-label>DNI</mat-label>
       <input formControlName="dni" matInput />
-      <mat-error>El campo es requerido</mat-error>
+      <mat-error>
+        @if (studentForm.get("dni")?.hasError('required')){
+          Este campo es requerido <br>
+        }
+        @if (studentForm.get("dni")?.hasError('pattern')){
+          Este campo acepta solo numeros<br>
+       }
+        @if (studentForm.get("dni")?.hasError('minlength')){
+           Este campo requiere al menos 7 caracteres<br>
+        }
+      </mat-error>
     </mat-form-field>
+
     <mat-form-field class="w-full">
       <mat-label>Nombre</mat-label>
-      <input formControlName="name" matInput />
-      <mat-error>El campo es requerido</mat-error>
+      <input formControlName="name" matInput/>
+      <mat-error>
+        @if (studentForm.get("name")?.hasError('required')){
+          Este campo es requerido <br>
+        }
+      </mat-error>
+      <!-- <pre>{{studentForm.get("name")?.errors | json}}</pre> -->
     </mat-form-field>
+
     <mat-form-field class="w-full">
       <mat-label>Apellido</mat-label>
       <input formControlName="lastName" matInput />
-      <mat-error>El campo es requerido</mat-error>
+      <mat-error>
+        @if (studentForm.get("lastName")?.hasError('required')){
+          Este campo es requerido <br>
+        }
+      </mat-error>
     </mat-form-field>
-
-    <!-- DATEPICKER (RANGO FECHA) -->
-    <!-- <mat-form-field class="w-full">
-            <mat-label>Fecha inicio - Fecha fin</mat-label>
-            <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate formControlName="startDate" placeholder="Fecha inicio">
-              <input matEndDate formControlName="endDate" placeholder="Fecha fin">
-            </mat-date-range-input>
-            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-date-range-picker #picker></mat-date-range-picker>
-          </mat-form-field> -->
-
 
     <mat-form-field class="w-full">
       <mat-label>Selecione Fecha</mat-label>
@@ -38,10 +46,9 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-dialog-close mat-button>Cancelar</button>
+  <button (click)="onClose()" mat-button>Cancelar</button>
   <button (click)="onSubmit()" mat-button>Guardar</button>
 </mat-dialog-actions>
