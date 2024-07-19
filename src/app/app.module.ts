@@ -7,10 +7,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { StudentDialogComponent } from './dashboard/students/components/student-dialog/student-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StudentDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Crear Curso</h2>
+<h2 mat-dialog-title>{{ editingCourse ? 'Editando ' + editingCourse.name : 'Crear curso' }}</h2>
 <mat-dialog-content>
     <form [formGroup]="courseForm">
         <mat-form-field class="w-full">
@@ -11,7 +11,7 @@
         <mat-form-field class="w-full">
             <mat-label>Fecha inicio - Fecha fin</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate formControlName="starDate" placeholder="Fecha inicio">
+              <input matStartDate formControlName="startDate" placeholder="Fecha inicio">
               <input matEndDate formControlName="endDate" placeholder="Fecha fin">
             </mat-date-range-input>
             <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
