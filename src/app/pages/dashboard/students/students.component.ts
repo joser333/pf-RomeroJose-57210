@@ -44,24 +44,24 @@ export class StudentsComponent {
 
         this.nombreStudent = value.name;
 
-        value['id'] = generarDniAleatorio();
+        // value['dni'] = generarDniAleatorio();
         this.dataSource = [...this.dataSource, value]
       }
     });
   }
 
   deleteStudentByDni(dni: string){
-    if(confirm('Esta seguro que desea eliminar el curso?')){
+    if(confirm('Esta seguro que desea eliminar el alumno?')){
       this.dataSource = this.dataSource.filter((el) => el.dni != dni);
     }
   }
 
   editStudent(editingStudent: Student){
-    this.matDialog.open(StudentDialogComponent, { data: this.editStudent }).afterClosed().subscribe({
+    this.matDialog.open(StudentDialogComponent, { data: editingStudent}).afterClosed().subscribe({
       next: (value) => {
         if(!!value){
           this.dataSource = this.dataSource.map((el) => 
-            el.dni === editingStudent.dni ? {...value, id: editingStudent.dni} : el
+            el.dni === editingStudent.dni ? {...value} : el
         );
         }
       }
