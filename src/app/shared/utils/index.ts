@@ -9,3 +9,10 @@ export function generateID(length: number) {
     }
     return result;
 }
+
+export function generarDniAleatorio() {
+  // Genera un número aleatorio entre 0 y 99999999
+  let numero = Math.floor(Math.random() * 100000000);
+
+  return numero;
+}
