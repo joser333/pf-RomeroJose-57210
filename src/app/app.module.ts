@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
+import { AuthModule } from './pages/auth/auth.module';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -10,9 +14,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DashboardModule,
+    AuthModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(), provideNativeDateAdapter()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
