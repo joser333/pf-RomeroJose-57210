@@ -18,9 +18,9 @@ export class StudentDialogComponent {
   ){
     this.studentForm = this.fb.group({
       dni:[null, [Validators.required, Validators.minLength(7), Validators.pattern('^[0-9]+$')]],
-      name:[null, Validators.required],
-      lastName: [null, Validators.required],
-      nacDate: [],
+      name:[null, [Validators.required, Validators.minLength(3)]],
+      lastName: [null, [Validators.required, Validators.minLength(3)]],
+      birthDate: [null, Validators.required],
     });
 
     if(this.editingStudent){

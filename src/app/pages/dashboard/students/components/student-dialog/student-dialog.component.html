@@ -24,6 +24,9 @@
         @if (studentForm.get("name")?.hasError('required')){
           Este campo es requerido <br>
         }
+        @if (studentForm.get("name")?.hasError('minlength')){
+          Este campo requiere al menos 3 caracteres<br>
+       }
       </mat-error>
       <!-- <pre>{{studentForm.get("name")?.errors | json}}</pre> -->
     </mat-form-field>
@@ -35,12 +38,20 @@
         @if (studentForm.get("lastName")?.hasError('required')){
           Este campo es requerido <br>
         }
+        @if (studentForm.get("lastName")?.hasError('minlength')){
+          Este campo requiere al menos 3 caracteres<br>
+       }
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-full">
-      <mat-label>Selecione Fecha</mat-label>
-      <input formControlName="nacDate" matInput [matDatepicker]="picker">
+      <mat-label>Selecione Fecha de Nacimiento</mat-label>
+      <input formControlName="birthDate" matInput [matDatepicker]="picker">
+      <mat-error>
+        @if (studentForm.get("birthDate")?.hasError('required')){
+          Este campo es requerido <br>
+        }
+      </mat-error>
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>

@@ -16,25 +16,25 @@ export class StudentsComponent {
 
   nombreStudent = '';
 
-  displayedColumns: string[] = ['dni', 'name', 'lastName', 'nacDate', 'actions'];
-  dataSource: Student[]=[
+  displayedColumns: string[] = ['dni', 'name', 'lastName', 'birthDate', 'actions'];
+  studentsList: Student[]=[
     {
       dni: '34343255',
       name: 'Juan',
       lastName: 'Perez',
-      nacDate: new Date,
+      birthDate: new Date,
     },
     {
       dni: '74835434',
       name: 'Martin',
       lastName: 'Lopez',
-      nacDate: new Date,
+      birthDate: new Date,
     },
     {
       dni: '34877764',
       name: 'Carla',
       lastName: 'Gonzalez',
-      nacDate: new Date,
+      birthDate: new Date,
     },
   ];
 
@@ -48,14 +48,14 @@ export class StudentsComponent {
         this.nombreStudent = value.name;
 
         // value['dni'] = generarDniAleatorio();
-        this.dataSource = [...this.dataSource, value]
+        this.studentsList = [...this.studentsList, value]
       }
     });
   }
 
   deleteStudentByDni(dni: string){
     if(confirm('Esta seguro que desea eliminar el alumno?')){
-      this.dataSource = this.dataSource.filter((el) => el.dni != dni);
+      this.studentsList = this.studentsList.filter((el) => el.dni != dni);
     }
   }
 
@@ -63,7 +63,7 @@ export class StudentsComponent {
     this.matDialog.open(StudentDialogComponent, { data: editingStudent}).afterClosed().subscribe({
       next: (value) => {
         if(!!value){
-          this.dataSource = this.dataSource.map((el) => 
+          this.studentsList = this.studentsList.map((el) => 
             el.dni === editingStudent.dni ? {...value} : el
         );
         }
