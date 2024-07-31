@@ -15,7 +15,7 @@ export class CoursesComponent implements OnInit {
   nombreCurso = '';
 
   displayedColumns: string[] = ['id', 'name', 'startDate', 'endDate', 'actions'];
-  dataSource: Course[]=[];
+  coursesList: Course[]=[];
   isLoading = false;
 
   constructor(
@@ -32,7 +32,7 @@ export class CoursesComponent implements OnInit {
     this.isLoading = true;
     this.coursesService.getCourses().subscribe({
       next: (courses) => {
-        this.dataSource = courses;
+        this.coursesList = courses;
       },
       complete: () =>{
         this.isLoading = false;
@@ -48,14 +48,30 @@ export class CoursesComponent implements OnInit {
         this.nombreCurso = value.name;
 
         value['id'] = generateID(4);
-        this.dataSource = [...this.dataSource, value]
-      }
+        this.isLoading = true;
+        this.coursesService.addCourse(value).subscribe({
+          next: (courses) => {
+            this.coursesList = [...courses]
+          },
+          complete: () => {
+            this.isLoading = false;
+          }
+        });
+      },
     });
   }
 
   deleteCourseById(id: string){
     if(confirm('Esta seguro que desea eliminar el curso?')){
-      this.dataSource = this.dataSource.filter((el) => el.id != id);
+      this.isLoading = true;
+      this.coursesService.deleteCourseById(id).subscribe({
+        next: (courses) => {
+          this.coursesList = [...courses];
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
     }
   }
 
@@ -63,11 +79,17 @@ export class CoursesComponent implements OnInit {
     this.matDialog.open(CourseDialogComponent, { data: editingCourse }).afterClosed().subscribe({
       next: (value) => {
         if(!!value){
-          this.dataSource = this.dataSource.map((el) => 
-            el.id === editingCourse.id ? {...value, id: editingCourse.id} : el
-        );
+          this.isLoading = true;
+          this.coursesService.editCourseById(editingCourse.id, value).subscribe({
+            next: (courses) => {
+              this.coursesList = [...courses];
+            },
+            complete: () => {
+              this.isLoading = false;
+            },
+          });
         }
-      }
+      },
     });
   }
 

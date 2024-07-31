@@ -51,14 +51,30 @@ export class StudentsComponent implements OnInit {
         this.nombreStudent = value.name;
 
         // value['dni'] = generarDniAleatorio();
-        this.studentsList = [...this.studentsList, value]
-      }
+        this.isLoading = true;
+        this.studentsService.addStudents(value).subscribe({
+          next: (student) => {
+            this.studentsList = [...student]
+          },
+          complete: () => {
+            this.isLoading = false;
+          }
+        });
+      },
     });
   }
 
   deleteStudentByDni(dni: string){
     if(confirm('Esta seguro que desea eliminar el alumno?')){
-      this.studentsList = this.studentsList.filter((el) => el.dni != dni);
+      this.isLoading = true;
+      this.studentsService.deleteStudentByDni(dni).subscribe({
+        next: (student) => {
+          this.studentsList = [...student];
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
     }
   }
 
@@ -66,11 +82,17 @@ export class StudentsComponent implements OnInit {
     this.matDialog.open(StudentDialogComponent, { data: editingStudent}).afterClosed().subscribe({
       next: (value) => {
         if(!!value){
-          this.studentsList = this.studentsList.map((el) => 
-            el.dni === editingStudent.dni ? {...value} : el
-        );
+          this.isLoading = true;
+          this.studentsService.editStudentByDni(editingStudent.dni, value).subscribe({
+            next: (student) => {
+              this.studentsList = [...student];
+            },
+            complete: () => {
+              this.isLoading = false;
+            },
+          });
         }
-      }
+      },
     });
   }
 
