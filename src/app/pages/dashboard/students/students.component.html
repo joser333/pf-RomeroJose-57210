@@ -1,54 +1,56 @@
+@if (isLoading) {
+<mat-spinner></mat-spinner>
+} @else {
 <button (click)="openDialog()" mat-flat-button class="mb-5">
-    <mat-icon>add</mat-icon>
-    Crear Alumno
+  <mat-icon>add</mat-icon>
+  Crear Alumno
 </button>
 <!-- <p>El nombre del alumno es: {{ nombreStudent | concat }}</p> -->
 
 <!-- TABLA INICIO -->
 <table mat-table [dataSource]="studentsList" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
+  <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- ID Column -->
-    <ng-container matColumnDef="dni">
-      <th mat-header-cell *matHeaderCellDef appFontSize> DNI </th>
-      <td mat-cell *matCellDef="let element"> {{element.dni}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef appFontSize> NOMBRE </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <!-- startDate Column -->
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef appFontSize> APELLIDO </th>
-      <td mat-cell *matCellDef="let element"> {{element.lastName }} </td>
-    </ng-container>
-  
-    <!-- endDate Column -->
-    <ng-container matColumnDef="birthDate">
-      <th mat-header-cell *matHeaderCellDef appFontSize> FECHA DE NACIMIENTO </th>
-      <td mat-cell *matCellDef="let element"> {{element.birthDate | date: 'dd/MM/YYYY' }} </td>
-    </ng-container>
 
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef appFontSize> ACCIONES </th>
-        <td mat-cell *matCellDef="let element">
-            <button (click)="editStudent(element)" mat-icon-button>
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button (click)="deleteStudentByDni(element.dni)" mat-icon-button>
-                <mat-icon>delete</mat-icon>
-            </button>
-        </td>
-      </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
-  
+  <!-- ID Column -->
+  <ng-container matColumnDef="dni">
+    <th mat-header-cell *matHeaderCellDef appFontSize> DNI </th>
+    <td mat-cell *matCellDef="let element"> {{element.dni}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef appFontSize> NOMBRE </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- startDate Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef appFontSize> APELLIDO </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName }} </td>
+  </ng-container>
+
+  <!-- endDate Column -->
+  <ng-container matColumnDef="birthDate">
+    <th mat-header-cell *matHeaderCellDef appFontSize> FECHA DE NACIMIENTO </th>
+    <td mat-cell *matCellDef="let element"> {{element.birthDate | date: 'dd/MM/YYYY' }} </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef appFontSize> ACCIONES </th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="editStudent(element)" mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button (click)="deleteStudentByDni(element.dni)" mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+}

@@ -8,6 +8,7 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,14 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
-    provideAnimationsAsync(), provideNativeDateAdapter()
+    provideAnimationsAsync(), 
+    provideNativeDateAdapter(),
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        appearance: 'outline'
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,10 @@
-import { Component, Pipe } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Student } from './models/index';
 import { StudentDialogComponent } from './components/student-dialog/student-dialog.component';
 import { generarDniAleatorio } from '../../../shared/utils';
 import { ConcatPipe } from '../../../shared/pipes/concat.pipe';
+import { StudentsService } from '../../../core/services/students.service';
 
 @Component({
   selector: 'app-students',
@@ -12,33 +13,35 @@ import { ConcatPipe } from '../../../shared/pipes/concat.pipe';
 })
 
 
-export class StudentsComponent {
+export class StudentsComponent implements OnInit {
 
   nombreStudent = '';
 
   displayedColumns: string[] = ['dni', 'name', 'lastName', 'birthDate', 'actions'];
-  studentsList: Student[]=[
-    {
-      dni: '34343255',
-      name: 'Juan',
-      lastName: 'Perez',
-      birthDate: new Date,
-    },
-    {
-      dni: '74835434',
-      name: 'Martin',
-      lastName: 'Lopez',
-      birthDate: new Date,
-    },
-    {
-      dni: '34877764',
-      name: 'Carla',
-      lastName: 'Gonzalez',
-      birthDate: new Date,
-    },
-  ];
+  studentsList: Student[]=[];
+  isLoading = false;
 
-  constructor(private matDialog: MatDialog){}
+  constructor(
+    private matDialog: MatDialog,
+    private studentsService: StudentsService
+  ){}
+
+
+  ngOnInit(): void {
+    this.loadStudents();
+  }
+
+  loadStudents(){
+    this.isLoading = true;
+    this.studentsService.getStudents().subscribe({
+      next: (student) => {
+        this.studentsList = student;
+      },
+      complete: () =>{
+        this.isLoading = false;
+      },
+    });
+  }
 
   openDialog(): void{
     this.matDialog.open(StudentDialogComponent).afterClosed().subscribe({

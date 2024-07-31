@@ -1,41 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CourseDialogComponent } from './components/course-dialog/course-dialog.component';
 import { Course } from './models/index';
 import { generateID } from '../../../shared/utils';
+import { CoursesService } from '../../../core/services/courses.service';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
-export class CoursesComponent {
+export class CoursesComponent implements OnInit {
 
   nombreCurso = '';
 
   displayedColumns: string[] = ['id', 'name', 'startDate', 'endDate', 'actions'];
-  dataSource: Course[]=[
-    {
-      id: 'abc1',
-      name: 'Angular',
-      startDate: new Date,
-      endDate: new Date,
-    },
-    {
-      id: 'abc2',
-      name: 'AWS',
-      startDate: new Date,
-      endDate: new Date,
-    },
-    {
-      id: 'abc3',
-      name: 'Diseño',
-      startDate: new Date,
-      endDate: new Date,
-    },
-  ];
+  dataSource: Course[]=[];
+  isLoading = false;
 
-  constructor(private matDialog: MatDialog){}
+  constructor(
+    private matDialog: MatDialog, 
+    private coursesService: CoursesService
+  ){}
+
+  ngOnInit(): void {
+    this.loadCourses();
+  }
+
+
+  loadCourses(){
+    this.isLoading = true;
+    this.coursesService.getCourses().subscribe({
+      next: (courses) => {
+        this.dataSource = courses;
+      },
+      complete: () =>{
+        this.isLoading = false;
+      },
+    });
+  }
 
   openDialog(): void{
     this.matDialog.open(CourseDialogComponent).afterClosed().subscribe({
