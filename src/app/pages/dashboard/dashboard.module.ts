@@ -13,6 +13,7 @@ import {MatListModule} from '@angular/material/list';
 import { StudentsModule } from './students/students.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { EnrollmentsModule } from './enrollments/enrollments.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { SharedModule } from '../../shared/shared.module';
     StudentsModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    EnrollmentsModule
   ]
 })
 export class DashboardModule { }

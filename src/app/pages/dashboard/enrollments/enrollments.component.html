@@ -1,0 +1,8 @@
+<h1>Inscripciones</h1>
+<hr/>
+
+@if(isLoading){
+    <p>cargando...</p>
+} @else {
+    <pre>{{ enrollments | json }}</pre>
+}
