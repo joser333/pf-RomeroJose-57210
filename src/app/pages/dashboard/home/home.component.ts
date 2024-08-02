@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  title = 'Mi Aplicación Angular';
+  welcomeMessage = '¡Bienvenido!';
+  welcomeMessage2 = 'Sistema de Gestión Universitaria!';
 }
