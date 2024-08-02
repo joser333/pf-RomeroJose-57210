@@ -1,8 +1,22 @@
-<h1>Inscripciones</h1>
-<hr/>
+<h1>Inscripciones</h1> <h6>(en desarrollo)</h6>
 
 @if(isLoading){
-    <p>cargando...</p>
+    <mat-spinner></mat-spinner>
 } @else {
-    <pre>{{ enrollments | json }}</pre>
+    <table mat-table [dataSource]="enrollments" class="mat-elevation-z8">
+      
+        <!-- ID Column -->
+        <ng-container matColumnDef="course">
+          <th mat-header-cell *matHeaderCellDef appFontSize> CURSO </th>
+          <td mat-cell *matCellDef="let element"> {{element.courseId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="student">
+          <th mat-header-cell *matHeaderCellDef appFontSize> ALUMNO </th>
+          <td mat-cell *matCellDef="let element"> {{element.studentId}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
 }

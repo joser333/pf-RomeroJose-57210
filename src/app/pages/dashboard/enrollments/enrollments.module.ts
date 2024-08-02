@@ -3,6 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { EnrollmentsRoutingModule } from './enrollments-routing.module';
 import { EnrollmentsComponent } from './enrollments.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({
@@ -14,7 +20,14 @@ import { EnrollmentsComponent } from './enrollments.component';
   ],
   imports: [
     CommonModule,
-    EnrollmentsRoutingModule
+    EnrollmentsRoutingModule,
+    MatProgressSpinnerModule,
+    MatFormField,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    FormsModule,
+    SharedModule,
   ]
 })
 export class EnrollmentsModule { }

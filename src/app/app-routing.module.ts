@@ -5,6 +5,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CoursesComponent } from './pages/dashboard/courses/courses.component';
 import { StudentsComponent } from './pages/dashboard/students/students.component';
 import { EnrollmentsComponent } from './pages/dashboard/enrollments/enrollments.component';
+import { HomeComponent } from './pages/dashboard/home/home.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
+      {
+        path: 'home',
+        component: HomeComponent
+      },
       {
         path: 'courses',
         component: CoursesComponent
@@ -27,7 +32,15 @@ const routes: Routes = [
         path: 'enrollments',
         component: EnrollmentsComponent
       },
+      {
+        path: '**',
+        redirectTo: '/dashboard/home'
+      },
     ],
+  },
+  {
+    path: '**',
+    redirectTo: 'auth',
   }
 ];
 

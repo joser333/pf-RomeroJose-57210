@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Enrollment } from '../../pages/dashboard/enrollments/models';
 import { delay, Observable, of } from 'rxjs';
-import { Enrollment } from '../pages/dashboard/enrollments/models';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,4 @@ export class EnrollmentsService {
   getEnrollments(): Observable<Enrollment[]>{
     return of<Enrollment[]>(this.MY_DATABASE_ENROLLMENTS).pipe(delay(400));
   }
-
-
 }
