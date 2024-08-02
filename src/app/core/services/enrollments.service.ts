@@ -9,16 +9,16 @@ export class EnrollmentsService {
 
   private MY_DATABASE_ENROLLMENTS: Enrollment[] = [
     {
-      studentId: 'aaa',
-      courseId: '111',
+      studentId: '34343255',
+      courseId: 'abc1',
     },
     {
-      studentId: 'bbb',
-      courseId: '222',
+      studentId: '74835434',
+      courseId: 'abc2',
     },
     {
-      studentId: 'ccc',
-      courseId: '222',
+      studentId: '34877764',
+      courseId: 'abc3',
     },
   ];
 
