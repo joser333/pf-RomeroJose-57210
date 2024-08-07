@@ -34,6 +34,9 @@ export class CoursesComponent implements OnInit {
       next: (courses) => {
         this.coursesList = courses;
       },
+      error: (error) =>{
+        console.log("error al cargar cursos en loadCourses: ", error);
+      },
       complete: () =>{
         this.isLoading = false;
       },
@@ -53,6 +56,9 @@ export class CoursesComponent implements OnInit {
           next: (courses) => {
             this.coursesList = [...courses]
           },
+          error: (error) =>{
+            console.log("error al agregar cursos en openDialog: ", error);
+          },
           complete: () => {
             this.isLoading = false;
           }
@@ -62,11 +68,14 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourseById(id: string){
-    if(confirm('Esta seguro que desea eliminar el curso?')){
+    if(confirm('¿Esta seguro que desea eliminar el curso?')){
       this.isLoading = true;
       this.coursesService.deleteCourseById(id).subscribe({
         next: (courses) => {
           this.coursesList = [...courses];
+        },
+        error: (error) =>{
+          console.log("error al eliminar cursos en deleteCoursesById: ", error);
         },
         complete: () => {
           this.isLoading = false;
@@ -83,6 +92,9 @@ export class CoursesComponent implements OnInit {
           this.coursesService.editCourseById(editingCourse.id, value).subscribe({
             next: (courses) => {
               this.coursesList = [...courses];
+            },
+            error: (error) =>{
+              console.log("error al editar cursos en editCourses: ", error);
             },
             complete: () => {
               this.isLoading = false;

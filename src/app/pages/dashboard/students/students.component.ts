@@ -37,6 +37,9 @@ export class StudentsComponent implements OnInit {
       next: (student) => {
         this.studentsList = student;
       },
+      error: (error) =>{
+        console.log("error al cargar alumnos en loadStudents: ", error);
+      },
       complete: () =>{
         this.isLoading = false;
       },
@@ -56,6 +59,9 @@ export class StudentsComponent implements OnInit {
           next: (student) => {
             this.studentsList = [...student]
           },
+          error: (error) =>{
+            console.log("error al agregar alumno en openDialog: ", error);
+          },
           complete: () => {
             this.isLoading = false;
           }
@@ -65,11 +71,14 @@ export class StudentsComponent implements OnInit {
   }
 
   deleteStudentByDni(dni: string){
-    if(confirm('Esta seguro que desea eliminar el alumno?')){
+    if(confirm('¿Esta seguro que desea eliminar el alumno?')){
       this.isLoading = true;
       this.studentsService.deleteStudentByDni(dni).subscribe({
         next: (student) => {
           this.studentsList = [...student];
+        },
+        error: (error) =>{
+          console.log("error al aliminar alumno en deleteStudentByDni: ", error);
         },
         complete: () => {
           this.isLoading = false;
@@ -86,6 +95,9 @@ export class StudentsComponent implements OnInit {
           this.studentsService.editStudentByDni(editingStudent.dni, value).subscribe({
             next: (student) => {
               this.studentsList = [...student];
+            },
+            error: (error) =>{
+              console.log("error al editar alumno en editStudent: ", error);
             },
             complete: () => {
               this.isLoading = false;
