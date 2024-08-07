@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Enrollment } from '../../pages/dashboard/enrollments/models';
+import { Enrollment } from '../../features/dashboard/enrollments/models';
 import { delay, Observable, of } from 'rxjs';
 
 @Injectable({

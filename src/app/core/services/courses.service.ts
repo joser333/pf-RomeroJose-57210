@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Course } from '../../pages/dashboard/courses/models';
+import { Course } from '../../features/dashboard/courses/models';
 import { THREE } from '@angular/cdk/keycodes';
 
 @Injectable({
