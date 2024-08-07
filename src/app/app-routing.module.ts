@@ -10,33 +10,17 @@ import { HomeComponent } from './features/dashboard/home/home.component';
 const routes: Routes = [
   {
     path: 'auth',
-    component: LoginComponent,
+    //component: LoginComponent,
+    loadChildren: () => import('./features/auth/auth.module').then(
+      (referenciaAlArchivo) => referenciaAlArchivo.AuthModule
+    ),
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    children: [
-      {
-        path: 'home',
-        component: HomeComponent
-      },
-      {
-        path: 'courses',
-        component: CoursesComponent
-      },
-      {
-        path: 'students',
-        component: StudentsComponent
-      },
-      {
-        path: 'enrollments',
-        component: EnrollmentsComponent
-      },
-      {
-        path: '**',
-        redirectTo: '/dashboard/home'
-      },
-    ],
+    loadChildren: () => import('./features/dashboard/dashboard.module').then(
+      (m) => m.DashboardModule
+    ),
   },
   {
     path: '**',

@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>{{ editingStudent ? 'Editando ' + editingStudent.name : 'Crear alumno' }}</h2>
 <mat-dialog-content>
   <form [formGroup]="studentForm">
-    <mat-form-field class="w-full">
+    <mat-form-field class="w-full mt-2">
       <mat-label>DNI</mat-label>
       <input formControlName="dni" matInput />
       <mat-error>
@@ -17,7 +17,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="w-full">
+    <mat-form-field class="w-full mt-2">
       <mat-label>Nombre</mat-label>
       <input formControlName="name" matInput/>
       <mat-error>
@@ -31,7 +31,7 @@
       <!-- <pre>{{studentForm.get("name")?.errors | json}}</pre> -->
     </mat-form-field>
 
-    <mat-form-field class="w-full">
+    <mat-form-field class="w-full mt-2">
       <mat-label>Apellido</mat-label>
       <input formControlName="lastName" matInput />
       <mat-error>
@@ -44,7 +44,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="w-full">
+    <mat-form-field class="w-full mt-2">
       <mat-label>Selecione Fecha de Nacimiento</mat-label>
       <input formControlName="birthDate" matInput [matDatepicker]="picker">
       <mat-error>

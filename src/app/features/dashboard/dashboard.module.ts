@@ -31,13 +31,10 @@ import { EnrollmentsModule } from './enrollments/enrollments.module';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    CoursesModule,
     MatListModule,
-    StudentsModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
-    EnrollmentsModule
+    SharedModule
   ]
 })
 export class DashboardModule { }
