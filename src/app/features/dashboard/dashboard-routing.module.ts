@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
 import { StudentsComponent } from './students/students.component';
 import { EnrollmentsComponent } from './enrollments/enrollments.component';
+import { adminGuard } from '../../core/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'enrollments',
+    canActivate: [adminGuard],
     loadChildren: () => import('./enrollments/enrollments.module').then(
       (m) => m.EnrollmentsModule
     )

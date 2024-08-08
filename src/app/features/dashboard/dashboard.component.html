@@ -9,10 +9,12 @@
         [activated]="studentsLink.isActive">Alumnos</a>
         <a mat-list-item routerLink="courses" routerLinkActive #coursesLink="routerLinkActive" 
         [activated]="coursesLink.isActive">Cursos</a>
-        <a mat-list-item routerLink="enrollments" routerLinkActive #enrollmentsLink="routerLinkActive" 
+        <a *ngIf="(authUser$ | async)?.role === 'ADMIN'"
+        mat-list-item routerLink="enrollments" routerLinkActive #enrollmentsLink="routerLinkActive" 
         [activated]="enrollmentsLink.isActive">Inscripciones</a>
-        <a mat-list-item routerLink="/auth">Cerrar Sesion</a>
+        <a mat-list-item (click)="logout()">Cerrar Sesion</a>
       </mat-nav-list>
+      
     </mat-drawer>
     <!--SIDEBAR FIN-->
   
