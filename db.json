@@ -17,12 +17,6 @@
       "startDate": "2024-08-22T03:00:00.000Z",
       "endDate": "2024-08-23T03:00:00.000Z",
       "id": "6mGZ"
-    },
-    {
-      "id": "EaNn",
-      "name": "prueba",
-      "startDate": "2024-08-21T03:00:00.000Z",
-      "endDate": "2024-08-22T03:00:00.000Z"
     }
   ],
   "students": [
@@ -41,11 +35,11 @@
       "id": "e307"
     },
     {
-      "id": "3d34",
       "dni": "1234567",
-      "name": "prueba ",
-      "lastName": "prueba",
-      "birthDate": "2024-08-14T03:00:00.000Z"
+      "name": "prueba  1",
+      "lastName": "prueba1",
+      "birthDate": "2024-08-14T03:00:00.000Z",
+      "id": "3d34"
     }
   ],
   "enrollments": []
