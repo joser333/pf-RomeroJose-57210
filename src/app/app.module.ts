@@ -9,6 +9,7 @@ import { AuthModule } from './features/auth/auth.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
   providers: [
     provideAnimationsAsync(), 
     provideNativeDateAdapter(),
+    provideHttpClient(withFetch()),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {

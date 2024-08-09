@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../../features/dashboard/courses/models';
 import { THREE } from '@angular/cdk/keycodes';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,33 +31,22 @@ export class CoursesService {
     },
   ]
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   getCourses(): Observable<Course[]> {
-
-    return new Observable((observer) => {
-      setTimeout(() => {
-        observer.next(this.MY_DATABASE_COURSES);
-        observer.complete();
-      }, 1000);
-    })
+   return this.httpClient.get<Course[]>(environment.apiUrl + '/courses')
   }
 
   addCourse(course: Course): Observable<Course[]> {
-    this.MY_DATABASE_COURSES.push(course);
-    return this.getCourses();
+    return this.httpClient.post<Course[]>(environment.apiUrl + '/courses', course)
   }
 
   editCourseById(id: string, update: Course) {
-    this.MY_DATABASE_COURSES = this.MY_DATABASE_COURSES.map((el) =>
-      el.id === id ? { ...update, id } : el
-    );
-    return this.getCourses();
+    return this.httpClient.put(environment.apiUrl + '/courses/' + id, update)
   }
 
   deleteCourseById(id: string): Observable<Course[]> {
-    this.MY_DATABASE_COURSES = this.MY_DATABASE_COURSES.filter((el) => el.id != id);
-    return this.getCourses();
+    return this.httpClient.delete<Course[]>(environment.apiUrl + '/courses/' + id)
   }
 
 }

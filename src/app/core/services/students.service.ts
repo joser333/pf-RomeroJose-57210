@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from '../../features/dashboard/students/models';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,33 +30,22 @@ export class StudentsService {
     },
   ]
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   getStudents(): Observable<Student[]> {
-
-    return new Observable((observer) => {
-      setTimeout(() => {
-        observer.next(this.MY_DATABASE_STUDENTS);
-        observer.complete();
-      }, 1000);
-    })
+      return this.httpClient.get<Student[]>(environment.apiUrl + '/student')
   }
 
   addStudents(student: Student): Observable<Student[]>{
-    this.MY_DATABASE_STUDENTS.push(student);
-    return this.getStudents();
+    return this.httpClient.post<Student[]>(environment.apiUrl + '/student', student)
   }
 
-  editStudentByDni(dni: string, update: Student) {
-    this.MY_DATABASE_STUDENTS = this.MY_DATABASE_STUDENTS.map((el) =>
-      el.dni === dni ? { ...update, dni } : el
-    );
-    return this.getStudents();
+  editStudentByDni(id: string, update: Student) {
+    return this.httpClient.put(environment.apiUrl + '/student/' + id, update)
   }
 
-  deleteStudentByDni(dni: string): Observable<Student[]> {
-    this.MY_DATABASE_STUDENTS = this.MY_DATABASE_STUDENTS.filter((el) => el.dni != dni);
-    return this.getStudents();
+  deleteStudentByDni(id: string): Observable<Student[]> {
+    return this.httpClient.delete<Student[]>(environment.apiUrl + '/student/' + id)
   }
 
 }

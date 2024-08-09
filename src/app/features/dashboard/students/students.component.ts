@@ -5,6 +5,7 @@ import { StudentDialogComponent } from './components/student-dialog/student-dial
 import { generarDniAleatorio } from '../../../shared/utils';
 import { ConcatPipe } from '../../../shared/pipes/concat.pipe';
 import { StudentsService } from '../../../core/services/students.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-students',
@@ -55,7 +56,7 @@ export class StudentsComponent implements OnInit {
 
         // value['dni'] = generarDniAleatorio();
         this.isLoading = true;
-        this.studentsService.addStudents(value).subscribe({
+        this.studentsService.addStudents(value).pipe(tap(() => this.loadStudents())).subscribe({
           next: (student) => {
             this.studentsList = [...student]
           },
@@ -70,10 +71,10 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  deleteStudentByDni(dni: string){
+  deleteStudentByDni(id: string){
     if(confirm('¿Esta seguro que desea eliminar el alumno?')){
       this.isLoading = true;
-      this.studentsService.deleteStudentByDni(dni).subscribe({
+      this.studentsService.deleteStudentByDni(id).pipe(tap(() => this.loadStudents())).subscribe({
         next: (student) => {
           this.studentsList = [...student];
         },
@@ -92,10 +93,8 @@ export class StudentsComponent implements OnInit {
       next: (value) => {
         if(!!value){
           this.isLoading = true;
-          this.studentsService.editStudentByDni(editingStudent.dni, value).subscribe({
-            next: (student) => {
-              this.studentsList = [...student];
-            },
+          this.studentsService.editStudentByDni(editingStudent.id, value).pipe(
+            tap(() => this.loadStudents())).subscribe({
             error: (error) =>{
               console.log("error al editar alumno en editStudent: ", error);
             },

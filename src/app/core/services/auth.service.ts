@@ -23,7 +23,7 @@ export class AuthService {
   login() {
     this._authUser$.next(this.FAKE_USER);
     localStorage.setItem('token', this.VALID_TOKEN);
-    this.router.navigate(['dashboard', 'courses']);
+    this.router.navigate(['dashboard', 'home']);
   }
 
   logout() {

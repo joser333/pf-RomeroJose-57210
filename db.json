@@ -1,0 +1,58 @@
+{
+  "courses": [
+    {
+      "id": "abc3",
+      "name": "Diseño",
+      "startDate": "2024-08-08T00:00:00",
+      "endDate": "2024-12-31T23:59:59Z"
+    },
+    {
+      "id": "Ysxp",
+      "name": "asasasas",
+      "startDate": "2024-08-15T03:00:00.000Z",
+      "endDate": "2024-08-22T03:00:00.000Z"
+    },
+    {
+      "name": "editado tambien",
+      "startDate": "2024-08-15T03:00:00.000Z",
+      "endDate": "2024-08-23T03:00:00.000Z",
+      "id": "P43g"
+    },
+    {
+      "name": "editado",
+      "startDate": "2024-08-22T03:00:00.000Z",
+      "endDate": "2024-08-23T03:00:00.000Z",
+      "id": "6mGZ"
+    },
+    {
+      "id": "EaNn",
+      "name": "prueba",
+      "startDate": "2024-08-21T03:00:00.000Z",
+      "endDate": "2024-08-22T03:00:00.000Z"
+    }
+  ],
+  "student": [
+    {
+      "dni": "34343255",
+      "name": "Juan",
+      "lastName": "Perez",
+      "birthDate": "2024-12-31T23:59:59Z",
+      "id": "da58"
+    },
+    {
+      "dni": "9999999999",
+      "name": "prueba",
+      "lastName": "prueba",
+      "birthDate": "2024-08-22T03:00:00.000Z",
+      "id": "e307"
+    },
+    {
+      "dni": "6666666",
+      "name": "editado",
+      "lastName": "uuuuuuuu",
+      "birthDate": "2024-08-22T03:00:00.000Z",
+      "id": "6edf"
+    }
+  ],
+  "enrollments": []
+}

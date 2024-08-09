@@ -4,6 +4,7 @@ import { CourseDialogComponent } from './components/course-dialog/course-dialog.
 import { Course } from './models/index';
 import { generateID } from '../../../shared/utils';
 import { CoursesService } from '../../../core/services/courses.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-courses',
@@ -52,7 +53,7 @@ export class CoursesComponent implements OnInit {
 
         value['id'] = generateID(4);
         this.isLoading = true;
-        this.coursesService.addCourse(value).subscribe({
+        this.coursesService.addCourse(value).pipe(tap(() => this.loadCourses())).subscribe({
           next: (courses) => {
             this.coursesList = [...courses]
           },
@@ -63,6 +64,7 @@ export class CoursesComponent implements OnInit {
             this.isLoading = false;
           }
         });
+        //this.loadCourses();
       },
     });
   }
@@ -70,7 +72,7 @@ export class CoursesComponent implements OnInit {
   deleteCourseById(id: string){
     if(confirm('¿Esta seguro que desea eliminar el curso?')){
       this.isLoading = true;
-      this.coursesService.deleteCourseById(id).subscribe({
+      this.coursesService.deleteCourseById(id).pipe(tap(() => this.loadCourses())).subscribe({
         next: (courses) => {
           this.coursesList = [...courses];
         },
@@ -89,10 +91,8 @@ export class CoursesComponent implements OnInit {
       next: (value) => {
         if(!!value){
           this.isLoading = true;
-          this.coursesService.editCourseById(editingCourse.id, value).subscribe({
-            next: (courses) => {
-              this.coursesList = [...courses];
-            },
+          this.coursesService.editCourseById(editingCourse.id, value).pipe(
+            tap(() => this.loadCourses())).subscribe({
             error: (error) =>{
               console.log("error al editar cursos en editCourses: ", error);
             },
