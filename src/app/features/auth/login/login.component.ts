@@ -12,7 +12,7 @@ export class LoginComponent {
   loginForm: FormGroup;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private fb: FormBuilder,
     @Inject(APP_CONFIG) private appConfig: any
   ) {
