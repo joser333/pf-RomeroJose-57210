@@ -51,13 +51,14 @@
   ],
   "enrollments": [
     {
+      "id": "e25d",
       "studentId": "34343255",
       "courseId": "abc1"
     },
     {
+      "id": "e25d",
       "studentId": "32323223",
-      "courseId": "3234444",
-      "id": "e25d"
+      "courseId": "3234444"
     }
   ]
 }

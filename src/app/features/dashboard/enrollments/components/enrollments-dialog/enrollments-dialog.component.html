@@ -2,16 +2,6 @@
 <mat-dialog-content>
   <form [formGroup]="enrollmentForm">
     <mat-form-field class="w-full mt-2">
-      <mat-label>ID CURSO</mat-label>
-      <input formControlName="courseId" matInput />
-      <mat-error>
-        @if (enrollmentForm.get("courseId")?.hasError('required')){
-          Este campo es requerido <br>
-        }
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="w-full mt-2">
       <mat-label>ID ALUMNO</mat-label>
       <input formControlName="studentId" matInput/>
       <mat-error>
@@ -20,6 +10,16 @@
         }
       </mat-error>
       <!-- <pre>{{studentForm.get("name")?.errors | json}}</pre> -->
+    </mat-form-field>
+
+    <mat-form-field class="w-full mt-2">
+      <mat-label>ID CURSO</mat-label>
+      <input formControlName="courseId" matInput />
+      <mat-error>
+        @if (enrollmentForm.get("courseId")?.hasError('required')){
+          Este campo es requerido <br>
+        }
+      </mat-error>
     </mat-form-field>
 
   </form>

@@ -13,7 +13,7 @@ import { EnrollmentsDialogComponent } from './components/enrollments-dialog/enro
 export class EnrollmentsComponent implements OnInit {
   isLoading = true;
   enrollmentsList: Enrollment[] = [];
-  displayedColumns: string[] = ['course', 'student','actions'];
+  displayedColumns: string[] = ['studentId', 'courseId','actions'];
 
   constructor(
     private enrollmentsService: EnrollmentsService,
