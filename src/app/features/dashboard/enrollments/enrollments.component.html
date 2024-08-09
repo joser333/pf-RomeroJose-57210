@@ -3,7 +3,14 @@
 @if(isLoading){
     <mat-spinner></mat-spinner>
 } @else {
-    <table mat-table [dataSource]="enrollments" class="mat-elevation-z8">
+  <button (click)="openDialog()" mat-flat-button class="mb-5">
+    <mat-icon>add</mat-icon>
+    Crear Inscripcion
+  </button>
+
+
+
+    <table mat-table [dataSource]="enrollmentsList" class="mat-elevation-z8">
       
         <!-- ID Column -->
         <ng-container matColumnDef="course">
@@ -14,6 +21,18 @@
         <ng-container matColumnDef="student">
           <th mat-header-cell *matHeaderCellDef appFontSize> ALUMNO </th>
           <td mat-cell *matCellDef="let element"> {{element.studentId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef appFontSize> ACCIONES </th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="editEnrollment(element)" mat-icon-button>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteEnrollmentsById(element.id)" mat-icon-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
         </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
