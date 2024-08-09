@@ -31,7 +31,7 @@
       "endDate": "2024-08-22T03:00:00.000Z"
     }
   ],
-  "student": [
+  "students": [
     {
       "dni": "34343255",
       "name": "Juan",
@@ -47,11 +47,11 @@
       "id": "e307"
     },
     {
-      "dni": "6666666",
-      "name": "editado",
-      "lastName": "uuuuuuuu",
-      "birthDate": "2024-08-22T03:00:00.000Z",
-      "id": "6edf"
+      "id": "3d34",
+      "dni": "1234567",
+      "name": "prueba ",
+      "lastName": "prueba",
+      "birthDate": "2024-08-14T03:00:00.000Z"
     }
   ],
   "enrollments": []
