@@ -42,11 +42,6 @@ export class AuthService {
     return of(isValid);
   }
 
-  verificarToken() {}
-
-  obtenerUsuarioAutenticado() {}
-
-
   obtenerUsuarioObservable(): Observable<any> {
     return new Observable((observer) => {
       setInterval(() => {
