@@ -9,24 +9,6 @@ import { environment } from '../../../environments/environment';
 })
 export class EnrollmentsService {
 
-  private MY_DATABASE_ENROLLMENTS: Enrollment[] = [
-    {
-      id: '11',
-      studentId: '34343255',
-      courseId: 'abc1',
-    },
-    {
-      id: '22',
-      studentId: '74835434',
-      courseId: 'abc2',
-    },
-    {
-      id: '33',
-      studentId: '34877764',
-      courseId: 'abc3',
-    },
-  ];
-
   constructor(private httpClient: HttpClient) { }
 
   /* getEnrollments(): Observable<Enrollment[]>{

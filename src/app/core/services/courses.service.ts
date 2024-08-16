@@ -10,27 +10,6 @@ import { environment } from '../../../environments/environment';
 })
 export class CoursesService {
 
-  private MY_DATABASE_COURSES = [
-    {
-      id: 'abc1',
-      name: 'Angular',
-      startDate: new Date,
-      endDate: new Date,
-    },
-    {
-      id: 'abc2',
-      name: 'AWS',
-      startDate: new Date,
-      endDate: new Date,
-    },
-    {
-      id: 'abc3',
-      name: 'Diseño',
-      startDate: new Date,
-      endDate: new Date,
-    },
-  ]
-
   constructor(private httpClient: HttpClient) { }
 
   getCourses(): Observable<Course[]> {

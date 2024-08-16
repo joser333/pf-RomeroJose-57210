@@ -46,9 +46,6 @@ export class AuthService {
 
   obtenerUsuarioAutenticado() {}
 
-  /**
-   * Ejercitacion Promesas y Observables
-   */
 
   obtenerUsuarioObservable(): Observable<any> {
     return new Observable((observer) => {

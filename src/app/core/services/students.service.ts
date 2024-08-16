@@ -9,27 +9,6 @@ import { environment } from '../../../environments/environment';
 })
 export class StudentsService {
 
-  private MY_DATABASE_STUDENTS = [
-    {
-      dni: '34343255',
-      name: 'Juan',
-      lastName: 'Perez',
-      birthDate: new Date,
-    },
-    {
-      dni: '74835434',
-      name: 'Martin',
-      lastName: 'Lopez',
-      birthDate: new Date,
-    },
-    {
-      dni: '34877764',
-      name: 'Carla',
-      lastName: 'Gonzalez',
-      birthDate: new Date,
-    },
-  ]
-
   constructor(private httpClient: HttpClient) { }
 
   getStudents(): Observable<Student[]> {
