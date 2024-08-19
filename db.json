@@ -1,4 +1,24 @@
 {
+  "users": [
+    {
+      "id": "11aa",
+      "firstName": "Jose",
+      "lastName": "Romero",
+      "email": "joseromero@gmail.com",
+      "password": "123456",
+      "token": "adjhkjjhonanwubca$faskjhk",
+      "role": "ADMIN"
+    },
+    {
+      "id": "22bb",
+      "firstName": "Marcos",
+      "lastName": "Solis",
+      "email": "marcosolis@gmail.com",
+      "password": "123456",
+      "token": "akjkjakjbdkjabkbdaw$faskjhk",
+      "role": "EMPLOYEE"
+    }
+  ],
   "courses": [
     {
       "id": "abc3",

@@ -11,10 +11,6 @@ export class EnrollmentsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  /* getEnrollments(): Observable<Enrollment[]>{
-    return of<Enrollment[]>(this.MY_DATABASE_ENROLLMENTS).pipe(delay(400));
-  } */
-
   getEnrollments(): Observable<Enrollment[]> {
     return this.httpClient.get<Enrollment[]>(environment.apiUrl + '/enrollments')
 }
