@@ -27,13 +27,13 @@
       "endDate": "2024-12-31T23:59:59Z"
     },
     {
-      "name": "editado tambien",
+      "name": "Programacion",
       "startDate": "2024-08-15T03:00:00.000Z",
       "endDate": "2024-08-23T03:00:00.000Z",
       "id": "P43g"
     },
     {
-      "name": "editado",
+      "name": "Pintura",
       "startDate": "2024-08-22T03:00:00.000Z",
       "endDate": "2024-08-23T03:00:00.000Z",
       "id": "6mGZ"
@@ -49,15 +49,15 @@
     },
     {
       "dni": "9999999999",
-      "name": "prueba",
-      "lastName": "prueba",
+      "name": "Miguel",
+      "lastName": "Soto",
       "birthDate": "2024-08-22T03:00:00.000Z",
       "id": "e307"
     },
     {
       "dni": "1234567",
-      "name": "prueba  1",
-      "lastName": "prueba1",
+      "name": "Marina",
+      "lastName": "Lopez",
       "birthDate": "2024-08-14T03:00:00.000Z",
       "id": "3d34"
     }
@@ -65,13 +65,13 @@
   "enrollments": [
     {
       "id": "e25d",
-      "studentId": "34343255",
-      "courseId": "abc1"
+      "studentId": "da58",
+      "courseId": "abc3"
     },
     {
       "id": "e25d",
-      "studentId": "32323223",
-      "courseId": "3234444"
+      "studentId": "e307",
+      "courseId": "P43g"
     }
   ]
 }

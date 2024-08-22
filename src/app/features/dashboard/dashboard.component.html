@@ -35,7 +35,7 @@
           <span class="example-spacer"></span>
         </div>
         @if(authUser$ | async ; as user){
-        <div>
+        <div style="font-size: medium;">
           {{"Bienvenido: " + user.firstName + " " + user.lastName}}
         </div>
         }
