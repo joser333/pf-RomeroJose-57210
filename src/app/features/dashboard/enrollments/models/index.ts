@@ -11,3 +11,8 @@ export interface LoadStudentsAndCoursesResult{
     students: Student[];
     courses: Course[];
 }
+
+export interface CreateEnrollmentPayload{
+    studentId: string;
+    courseId: string;
+}

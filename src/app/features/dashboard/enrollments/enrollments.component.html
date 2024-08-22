@@ -1,16 +1,16 @@
 <h1>Inscripciones</h1>
 
 @if(isLoading$ | async){
-<p>CARGANDO....</p>
+<<p>CARGANDO....</p>>
 } @else {
 
 @if(error$ | async){
 <p>ERROR INESPERADO</p>
 } @else {
-<form class="grid formgrid">
+<form [formGroup]="enrollmentForm" class="grid formgrid">
   <div class="col-6">
     <mat-form-field class="w-full">
-      <mat-select placeholder="Selecciona un alumno">
+      <mat-select formControlName="studentId" placeholder="Selecciona un alumno">
         @for (student of students$ | async; track $index) {
           <mat-option [value]="student.id">{{student.name + " " + student.lastName}}</mat-option>
         }
@@ -19,7 +19,7 @@
   </div>
   <div class="col-6">
     <mat-form-field class="w-full">
-      <mat-select placeholder="Selecciona un curso">
+      <mat-select formControlName="courseId" placeholder="Selecciona un curso">
         @for (course of courses$ | async; track $index) {
           <mat-option [value]="course.id">{{course.name}}</mat-option>
         }
@@ -29,7 +29,7 @@
 
 </form>
 
-<!-- <button (click)="addEnrollments()" mat-flat-button class="mb-5"></button> -->
+<button (click)="addEnrollment()" mat-flat-button class="mb-5">+</button>
 <pre>{{enrollmentsList$ | async | json}}</pre>
 }
 

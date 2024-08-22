@@ -37,6 +37,18 @@ export class EnrollmentsEffects {
     );
   });
 
+  createEnrollment$ = createEffect(() => {
+    return this.actions$.pipe(
+
+      ofType(EnrollmentsActions.createEnrollment),
+      concatMap((action) =>
+        this.enrollmentsService.addEnrollment(action.payload).pipe(
+          map(data => EnrollmentsActions.createEnrollmentSuccess({ data })),
+          catchError(error => of(EnrollmentsActions.createEnrollmentFailure({ error }))))
+      )
+    );
+  });
+
 
   constructor(private actions$: Actions,
     private enrollmentsService: EnrollmentsService

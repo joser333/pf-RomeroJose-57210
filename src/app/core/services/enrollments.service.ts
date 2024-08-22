@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Enrollment } from '../../features/dashboard/enrollments/models';
-import { delay, forkJoin, Observable, of } from 'rxjs';
+import { CreateEnrollmentPayload, Enrollment } from '../../features/dashboard/enrollments/models';
+import { concatMap, delay, forkJoin, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { LoadStudentsAndCoursesResult } from '../../features/dashboard/enrollments/models/index';
@@ -25,9 +25,18 @@ getStudentsAndCourses(): Observable<LoadStudentsAndCoursesResult>{
   })
 }
 
-addEnrollments(enrollments: Enrollment): Observable<Enrollment[]>{
-  return this.httpClient.post<Enrollment[]>(environment.apiUrl + '/enrollments', enrollments)
+addEnrollment(payload: CreateEnrollmentPayload): Observable<Enrollment>{
+  return this.httpClient.post<Enrollment>(environment.apiUrl + '/enrollments', payload).pipe(
+    concatMap((enrollmentCreated) => 
+      this.httpClient.get<Enrollment>(
+        environment.apiUrl + '/enrollments/' + enrollmentCreated.id + '?_embed=student&_embed=course'
+      ))
+  );
 }
+
+/* addEnrollments(enrollments: Enrollment): Observable<Enrollment[]>{
+  return this.httpClient.post<Enrollment[]>(environment.apiUrl + '/enrollments', enrollments)
+} */
 
 editEnrollmentsById(id: string, update: Enrollment) {
   return this.httpClient.put(environment.apiUrl + '/enrollments/' + id, update)

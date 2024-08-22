@@ -63,6 +63,12 @@ on(EnrollmentsActions.loadStudentsAndCoursesFailure, (state, action) => ({
   isLoadingStudentsAndCourses: false,
   error: action.error
 })),
+
+
+on(EnrollmentsActions.createEnrollmentSuccess, (state, action) => ({
+...state,
+enrollments: [...state.enrollments, action.data]
+})),
 );
 
 export const enrollmentsFeature = createFeature({
