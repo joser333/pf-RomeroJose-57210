@@ -5,7 +5,9 @@ import { StudentDialogComponent } from './components/student-dialog/student-dial
 import { generarDniAleatorio } from '../../../shared/utils';
 import { ConcatPipe } from '../../../shared/pipes/concat.pipe';
 import { StudentsService } from '../../../core/services/students.service';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { User } from '../users/models';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-students',
@@ -17,6 +19,7 @@ import { tap } from 'rxjs';
 export class StudentsComponent implements OnInit {
 
   nombreStudent = '';
+  authUser$: Observable<User | null>;
 
   displayedColumns: string[] = ['dni', 'name', 'lastName', 'birthDate', 'actions'];
   studentsList: Student[]=[];
@@ -24,8 +27,11 @@ export class StudentsComponent implements OnInit {
 
   constructor(
     private matDialog: MatDialog,
-    private studentsService: StudentsService
-  ){}
+    private studentsService: StudentsService,
+    private authService: AuthService
+  ){
+    this.authUser$ = this.authService.authUser$;
+  }
 
 
   ngOnInit(): void {

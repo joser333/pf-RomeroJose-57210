@@ -49,6 +49,18 @@ export class EnrollmentsEffects {
     );
   });
 
+  deleteEnrollment$ = createEffect(() => {
+    return this.actions$.pipe(
+
+      ofType(EnrollmentsActions.deleteEnrollment),
+      concatMap((action) =>
+        this.enrollmentsService.deleteEnrollmentsById(action.id).pipe(
+          map(data => EnrollmentsActions.deleteEnrollmentSuccess({ data })),
+          catchError(error => of(EnrollmentsActions.deleteEnrollmentFailure({ error }))))
+      )
+    );
+  });
+
 
   constructor(private actions$: Actions,
     private enrollmentsService: EnrollmentsService

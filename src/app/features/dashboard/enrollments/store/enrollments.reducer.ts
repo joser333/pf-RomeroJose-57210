@@ -36,7 +36,8 @@ export const reducer = createReducer(
     return {
       ...state,
       isLoading: false,
-      enrollments: action.data
+      enrollments: action.data,
+      error: null,
     }
   }),
   on(EnrollmentsActions.loadEnrollmentsFailure, (state, action) => {
@@ -57,6 +58,7 @@ export const reducer = createReducer(
     isLoadingStudentsAndCourses: false,
     students: action.data.students,
     courses: action.data.courses,
+    error: null,
 })),
 on(EnrollmentsActions.loadStudentsAndCoursesFailure, (state, action) => ({
   ...state,
@@ -67,8 +69,16 @@ on(EnrollmentsActions.loadStudentsAndCoursesFailure, (state, action) => ({
 
 on(EnrollmentsActions.createEnrollmentSuccess, (state, action) => ({
 ...state,
-enrollments: [...state.enrollments, action.data]
+enrollments: [...state.enrollments, action.data],
+error: null,
 })),
+
+
+on(EnrollmentsActions.deleteEnrollmentSuccess, (state, action) => ({
+  ...state,
+  enrollments: state.enrollments.filter((s) => s.id !== action.data.id),
+  error: null,
+  })),
 );
 
 export const enrollmentsFeature = createFeature({

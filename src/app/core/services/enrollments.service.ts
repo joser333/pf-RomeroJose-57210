@@ -34,15 +34,12 @@ addEnrollment(payload: CreateEnrollmentPayload): Observable<Enrollment>{
   );
 }
 
-/* addEnrollments(enrollments: Enrollment): Observable<Enrollment[]>{
-  return this.httpClient.post<Enrollment[]>(environment.apiUrl + '/enrollments', enrollments)
-} */
+deleteEnrollmentsById(id: string): Observable<Enrollment> {
+  return this.httpClient.delete<Enrollment>(environment.apiUrl + '/enrollments/' + id)
+}
 
 editEnrollmentsById(id: string, update: Enrollment) {
   return this.httpClient.put(environment.apiUrl + '/enrollments/' + id, update)
 }
 
-deleteEnrollmentsById(id: string): Observable<Enrollment[]> {
-  return this.httpClient.delete<Enrollment[]>(environment.apiUrl + '/enrollments/' + id)
-}
 }

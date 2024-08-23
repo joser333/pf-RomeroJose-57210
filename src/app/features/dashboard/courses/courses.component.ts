@@ -4,7 +4,9 @@ import { CourseDialogComponent } from './components/course-dialog/course-dialog.
 import { Course } from './models/index';
 import { generateID } from '../../../shared/utils';
 import { CoursesService } from '../../../core/services/courses.service';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { User } from '../users/models';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-courses',
@@ -14,6 +16,7 @@ import { tap } from 'rxjs';
 export class CoursesComponent implements OnInit {
 
   nombreCurso = '';
+  authUser$: Observable<User | null>;
 
   displayedColumns: string[] = ['id', 'name', 'startDate', 'endDate', 'actions'];
   coursesList: Course[]=[];
@@ -21,8 +24,11 @@ export class CoursesComponent implements OnInit {
 
   constructor(
     private matDialog: MatDialog, 
-    private coursesService: CoursesService
-  ){}
+    private coursesService: CoursesService,
+    private authService: AuthService
+  ){
+    this.authUser$ = this.authService.authUser$;
+  }
 
   ngOnInit(): void {
     this.loadCourses();
