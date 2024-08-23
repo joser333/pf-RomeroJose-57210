@@ -1,9 +1,9 @@
 # Autenticacion
-- Usuario ADMIN
+- Usuario Administrador (ADMIN)
 User: joseromero@gmail.com
 Password: 123456
 
-- Usuario Empleado
+- Usuario Empleado (EMPLOYEE)
 User: marcosolis@gmail.com
 Password: 123456
 
