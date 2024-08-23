@@ -1,3 +1,13 @@
+# Autenticacion
+- Usuario ADMIN
+User: joseromero@gmail.com
+Password: 123456
+
+- Usuario Empleado
+User: marcosolis@gmail.com
+Password: 123456
+
+
 # 1PFROMERO57210
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
